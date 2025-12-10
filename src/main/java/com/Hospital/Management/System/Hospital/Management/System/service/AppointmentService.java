@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.Hospital.Management.System.Hospital.Management.System.model.Appointment;
+import com.Hospital.Management.System.Hospital.Management.System.model.Doctor;
+import com.Hospital.Management.System.Hospital.Management.System.model.Patient;
 import com.Hospital.Management.System.Hospital.Management.System.repository.AppointmentRepository;
 import com.Hospital.Management.System.Hospital.Management.System.repository.DoctorRepository;
 import com.Hospital.Management.System.Hospital.Management.System.repository.PatientRepository;
@@ -28,9 +30,21 @@ public class AppointmentService {
         return appointmentRepository.findAll();
     }
 
-    public Appointment createAppointment(Appointment appointment) {
-        return appointmentRepository.save(appointment);
-    }
+   public Appointment create(Appointment appointment, Long patientId, Long doctorId) {
+    // Fetch patient and doctor from DB
+    Patient patient = patientRepo.findById(patientId)
+            .orElseThrow(() -> new RuntimeException("Patient not found with id " + patientId));
+
+    Doctor doctor = doctorRepo.findById(doctorId)
+            .orElseThrow(() -> new RuntimeException("Doctor not found with id " + doctorId));
+
+    // Set them to the appointment
+    appointment.setPatient(patient);
+    appointment.setDoctor(doctor);
+
+    // Save
+    return appointmentRepository.save(appointment);
+}
 
     public Appointment getAppointmentById(Long id) {
         return appointmentRepository.findById(id).orElse(null);
