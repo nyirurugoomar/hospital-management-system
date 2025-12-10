@@ -1,0 +1,31 @@
+# Maven / Spring Boot
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Logs
+logs/
+*.log
+
+# Spring Boot config
+application.properties
+application.yml
+
+# IDE files
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+
+# IntelliJ
+out/
+
+# Environment variables
+.env
