@@ -39,9 +39,6 @@ public class DepartmentController {
         }
 
         @GetMapping("/{id}")
-        // public String get(@PathVariable Long id) {
-        //     return departmentService.getById(id);
-        // }
         public Department getById(@PathVariable Long id){
             return departmentService.getById(id);
         }

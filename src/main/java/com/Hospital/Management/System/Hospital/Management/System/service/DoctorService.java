@@ -20,8 +20,12 @@ public class DoctorService {
         this.departmentRepo = departmentRepo;
     }
 
-    public Doctor create(Doctor doctor, Long deptId) {
-        Department department = departmentRepo.findById(deptId).orElse(null);
+    public Doctor create(Doctor doctor) {
+        Long deptId = doctor.getDepartment().getId();
+
+        Department department = departmentRepo.findById(deptId)
+                .orElseThrow(() -> new RuntimeException("Department not found"));
+
         doctor.setDepartment(department);
         return doctorRepo.save(doctor);
     }
@@ -34,15 +38,20 @@ public class DoctorService {
         return doctorRepo.findById(id).orElse(null);
     }
 
-    public Doctor update(Long id, Doctor doctor, Long deptId) {
+    public Doctor update(Long id, Doctor doctor) {
         Doctor existing = getById(id);
 
         if (existing == null) return null;
 
         existing.setName(doctor.getName());
         existing.setSpecialization(doctor.getSpecialization());
-        Department department = departmentRepo.findById(deptId).orElse(null);
-        existing.setDepartment(department);
+
+        if (doctor.getDepartment() != null) {
+            Department department = departmentRepo.findById(doctor.getDepartment().getId())
+                    .orElseThrow(() -> new RuntimeException("Department not found"));
+            existing.setDepartment(department);
+        }
+
         return doctorRepo.save(existing);
     }
 
