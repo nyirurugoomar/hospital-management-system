@@ -3,6 +3,7 @@ package com.Hospital.Management.System.Hospital.Management.System.controller;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,7 @@ public class DepartmentController {
             return departmentService.getAll();
         }
 
-        @PostMapping
+        @PreAuthorize("hasRole('ADMIN')")        @PostMapping
         public Department create(@RequestBody Department department) {
             return departmentService.create(department);
         }

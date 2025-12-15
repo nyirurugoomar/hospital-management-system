@@ -9,6 +9,7 @@
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/controller/MedicalRecordController.java
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/controller/PatientController.java
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/dto/AuthRequest.java
+/Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/dto/AuthResponse.java
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/exception/GlobalExceptionHandler.java
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/exception/ResourceNotFoundException.java
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/model/Appointment.java
