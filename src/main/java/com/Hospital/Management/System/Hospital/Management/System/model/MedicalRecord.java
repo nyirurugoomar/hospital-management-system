@@ -22,8 +22,8 @@ public class MedicalRecord {
     private String diagnosis;
     private String treatment;
 
-    @OneToOne
-    @JoinColumn(name = "patient_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "patient_id", nullable = true)
     private Patient patient;
 
 }

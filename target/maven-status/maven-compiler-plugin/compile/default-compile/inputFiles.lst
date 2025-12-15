@@ -2,6 +2,7 @@
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/controller/AppointmentController.java
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/controller/DepartmentController.java
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/controller/DoctorController.java
+/Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/controller/MedicalRecordController.java
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/controller/PatientController.java
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/model/Appointment.java
 /Users/omar/Documents/Project/Springboot/Hospital-Management-System/hospital-management-system/src/main/java/com/Hospital/Management/System/Hospital/Management/System/model/Department.java

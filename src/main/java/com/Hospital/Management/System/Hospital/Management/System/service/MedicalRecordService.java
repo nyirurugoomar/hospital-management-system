@@ -4,6 +4,8 @@ package com.Hospital.Management.System.Hospital.Management.System.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import com.Hospital.Management.System.Hospital.Management.System.model.Patient;
+
 
 import com.Hospital.Management.System.Hospital.Management.System.model.MedicalRecord;
 import com.Hospital.Management.System.Hospital.Management.System.repository.MedicalRecordRepository;
@@ -22,9 +24,15 @@ public class MedicalRecordService {
         this.patientRepository = patientRepository;
     }
 
-    public MedicalRecord create(MedicalRecord medicalRecord) {
-        return medicalRecordRepository.save(medicalRecord);
-    }
+   public MedicalRecord create(MedicalRecord medicalRecord, Long patientId) {
+
+    Patient patient = patientRepository.findById(patientId)
+            .orElseThrow(() -> new RuntimeException("Patient not found"));
+
+    medicalRecord.setPatient(patient);
+
+    return medicalRecordRepository.save(medicalRecord);
+}
 
     public List<MedicalRecord> getAll() {
         return medicalRecordRepository.findAll();
@@ -35,16 +43,23 @@ public class MedicalRecordService {
     }
 
     public MedicalRecord update(Long id, MedicalRecord medicalRecord) {
-        MedicalRecord existing = getById(id);
+    MedicalRecord existing = getById(id);
+    if (existing == null) return null;
 
-        if (existing == null) return null;
+    existing.setDiagnosis(medicalRecord.getDiagnosis());
+    existing.setTreatment(medicalRecord.getTreatment());
 
-        existing.setDiagnosis(medicalRecord.getDiagnosis());
-        existing.setTreatment(medicalRecord.getTreatment());
-        existing.setPatient(medicalRecord.getPatient());
-
-        return medicalRecordRepository.save(existing);
+    if (medicalRecord.getPatient() != null && medicalRecord.getPatient().getId() != null) {
+        Patient patient = patientRepository.findById(medicalRecord.getPatient().getId())
+                .orElseThrow(() -> new RuntimeException("Patient not found"));
+        existing.setPatient(patient);
+    } else {
+        // if you want to remove the relation when incoming patient is null:
+        existing.setPatient(null);
     }
+
+    return medicalRecordRepository.save(existing);
+}
 
     public void delete(Long id) {
         medicalRecordRepository.deleteById(id);
